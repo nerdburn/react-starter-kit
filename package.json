@@ -1,0 +1,51 @@
+{
+  "name": "prototype",
+  "version": "1.0.0",
+  "description": "Project base for Node, Express, MySQL projects",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inputlogic/prototype.git"
+  },
+  "author": "Input Logic, Inc.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inputlogic/prototype/issues"
+  },
+  "homepage": "https://github.com/inputlogic/prototype#readme",
+  "dependencies": {
+    "async": "^1.5.0",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.14.1",
+    "cookie-parser": "^1.4.0",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1",
+    "gulp": "~3.8.7",
+    "gulp-concat": "~2.3.4",
+    "gulp-less": "~1.3.5",
+    "gulp-nodemon": "*",
+    "gulp-rename": "~1.2.0",
+    "gulp-uglify": "~0.3.1",
+    "hbs": "^4.0.0",
+    "knex": "^0.9.0",
+    "mysql2": "^0.15.8",
+    "nunjucks": "^2.2.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "path": "^0.4.10",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "chai": "^3.4.1",
+    "gulp-babel": "^6.1.1",
+    "mocha": "^2.3.4"
+  }
+}
