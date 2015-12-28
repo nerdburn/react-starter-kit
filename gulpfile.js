@@ -5,8 +5,9 @@ var gulp = require('gulp'),
   less = require('gulp-less'),
   nodemon = require('gulp-nodemon'),
   concat = require('gulp-concat'),
-  path = require('path'),
-  babel = require('gulp-babel');
+  babel = require('gulp-babel'),
+  eslint = require('gulp-eslint'),    
+  path = require('path');
 
 // file locations
 var path = {
@@ -16,7 +17,7 @@ var path = {
 };
 
 // startups
-gulp.task('default', ['watch', 'less', 'js', 'node']);
+gulp.task('default', ['less', 'lint', 'js', 'watch', 'node']);
 
 // static
 gulp.task('static', ['less']);
@@ -35,7 +36,7 @@ gulp.task('node', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch(path.js + '**/*', ['js']);
+	gulp.watch(path.js + '**/*', ['lint', 'js']);
 	gulp.watch(path.css + "**/*", ['less']);
 });
 
@@ -52,15 +53,32 @@ gulp.task('less', function() {
 
 });
 
+// lint
+gulp.task('lint', function() {
+  gulp.src(path.js + '/jsx/*')
+    .pipe(eslint({
+      baseConfig: {
+        "ecmaFeatures": {
+           "jsx": true
+         }
+      }
+    }))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
 // js
 gulp.task('js', function(){
 
   gulp.src([
       path.js + 'site.js'
     ])
-		.pipe(babel({
-			presets: ['es2015']
-		}))
+    .pipe(babel({
+      only: [
+        path.js + '/jsx/*',
+      ],
+      compact: false
+    }))
     .pipe(concat('site.js'))
     .pipe(gulp.dest(path.js));
 

@@ -70,10 +70,10 @@ function startServer() {
 
   // pass hbs local env
   hbs.localsAsTemplateData(app);
-  app.locals.env = process.env.NODE_ENV;  
+  app.locals.env = process.env.NODE_ENV;
   
   // start server
-  var server = app.listen(config.port || 3000, function () {
+  var server = app.listen(config.port || 3000, function() {
     var host = server.address().address;
     var port = server.address().port;
     console.log('Listening at http://%s:%s in %s mode',  host, port, config.env);
